@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+
+        </div>
+    </div>
+    <style>
+        .wrapper {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 0 auto;
+            position: relative;
+        }
+        .wrapper .box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+</body>
+<script>
+const box = document.querySelector('.box');
+(
+    async function() {
+    await new Promise(res => {
+        let i = 0;
+        let id = setInterval(() => {
+            box.style.left = i + 'px';
+            i += 10;
+            if (i > 400) {
+                clearInterval(id);
+                res();
+            }
+        }, 50)
+    })
+    await new Promise(res => {
+        let i = 0;
+        let id = setInterval(() => {
+            box.style.top = i + 'px';
+            i += 10;
+            if (i > 400) {
+                clearInterval(id);
+                res();
+            }
+        }, 50)
+    })
+    await new Promise(res => {
+        let i = 400;
+        let id = setInterval(() => {
+            box.style.left = i + 'px';
+            i -= 10;
+            if (i < 0) {
+                clearInterval(id);
+                res();
+            }
+        }, 50)
+    })
+    await new Promise(res => {
+        let i = 400;
+        let id = setInterval(() => {
+            box.style.top = i + 'px';
+            i -= 10;
+            if (i < 0) {
+                clearInterval(id);
+                res();
+            }
+        }, 50)
+    })
+}
+)();
+
+
+</script>
+</html>
